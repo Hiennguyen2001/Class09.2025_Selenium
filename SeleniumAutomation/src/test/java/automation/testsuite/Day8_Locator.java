@@ -19,6 +19,7 @@ public class Day8_Locator extends CommonBase {
         System.out.println("Password element is: " + password);
     }
     @Test
+
     public void getElementByLinkText()
     {
         driver = initChromeDriver(CT_PageURL.BEPANTOAN_URL);
