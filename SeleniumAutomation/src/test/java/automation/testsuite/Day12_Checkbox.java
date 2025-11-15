@@ -3,6 +3,7 @@ package automation.testsuite;
 import automation.common.CommonBase;
 import automation.constant.CT_PageURL;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -35,10 +36,11 @@ public class Day12_Checkbox extends CommonBase {
     public void clickToCheckbox()
     {
         driver = initChromeDriver(CT_PageURL.DEMOQA_URL);
-//        WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
-//        WebElement readCheckbox = driver.findElement(By.id("hobbies-checkbox-2"));
-//        WebElement musicCheckbox = driver.findElement(By.id("hobbies-checkbox-3"));
-//
+       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id("hobbies-checkbox-1")));
+        WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
+        WebElement readCheckbox = driver.findElement(By.id("hobbies-checkbox-2"));
+        WebElement musicCheckbox = driver.findElement(By.id("hobbies-checkbox-3"));
+
 //        if (sportCheckbox.isSelected()==false)
 //        {
 //            sportCheckbox.click();
@@ -60,8 +62,11 @@ public class Day12_Checkbox extends CommonBase {
             if(webElement.isSelected() == false)
             {
                 webElement.click();
-                assertFalse(webElement.isSelected());
+
             }
+            assertFalse(sportCheckbox.isSelected());
+            assertFalse(musicCheckbox.isSelected());
+            assertFalse(readCheckbox.isSelected());
         }
     }
 
