@@ -9,5 +9,6 @@ public class CT_PageURL {
     public static String GLOBALQA_URL = "https://www.globalsqa.com/demo-site/select-dropdown-menu/";
     public static String CODESTAR_URL ="https://codestar.vn/product-category/aws/";
     public static String  CRMSTAR_URL ="https://test-system.crmstar.vn/"   ;
+    public static String VIBLO_ASIS_URL = "https://accounts.viblo.asia/login";
 
 }

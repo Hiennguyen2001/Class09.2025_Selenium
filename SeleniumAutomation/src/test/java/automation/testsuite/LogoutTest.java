@@ -24,7 +24,7 @@ public class LogoutTest extends CommonBase {
         //login
         LoginPage login = new LoginPage(driver);
         login.LoginFunction("admin@gmail.com", "12345678");
-        WebElement textQuanLyND = driver.findElement(By.xpath("//p[text()='Quản lý người dùng']"));
+       // WebElement textQuanLyND = driver.findElement(By.xpath("//p[text()='Quản lý người dùng']"));
 
         //Click Admin
         WebElement btnAdmin  = driver.findElement(By.id("dropdownMenuLink"));
