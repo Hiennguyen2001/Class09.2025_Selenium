@@ -118,6 +118,12 @@ public class CommonBase {
             return false;
         }
     }
+    public void scrollToElement( By locator)
+    {
+        WebElement element = findElement_fluent(locator);
+        JavascriptExecutor js = (JavascriptExecutor)  driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
 
     public void closeDriver()
