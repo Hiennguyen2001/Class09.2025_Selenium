@@ -3,6 +3,7 @@ package automation.common;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -124,7 +125,64 @@ public class CommonBase {
         JavascriptExecutor js = (JavascriptExecutor)  driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
+    private WebDriver initFirefoxDriver()
+    {
 
+        System.setProperty("webdriver.firefox.driver", System.getProperty("user.dir") + "\\driver\\geckodriver.exe");
+        FirefoxDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+        return driver;
+    }
+
+    private WebDriver initChromeDriver()
+    {
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--allow-third-party-cookies");
+
+        Map<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("credentials_enable_service", false); // Disables the "save password" prompt
+        chromePrefs.put("profile.password_manager_enabled", false); // Disables the password manager
+        chromePrefs.put("profile.password_manager_leak_detection", false); // Disables the password leak detection
+        // warning
+        chromeOptions.setExperimentalOption("prefs", chromePrefs);
+        ChromeDriver driver = new ChromeDriver(chromeOptions);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+        return driver;
+    }
+    private WebDriver initMSEdgeDriver()
+    {
+        System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\driver\\msedgedriver.exe");
+        EdgeDriver driver = new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+        return driver;
+    }
+    public WebDriver setupDriver (String browserName)
+    {
+        switch (browserName.trim().toLowerCase()){
+            case "firefox":
+                System.out.println("Initialing firefox driver....");
+                driver = initFirefoxDriver();
+                break;
+            case "chrome":
+                System.out.println("Initialing chrome driver....");
+                driver =  initChromeDriver();
+                break;
+            case "edge":
+                System.out.println("Initialing MS Edge driver....");
+                driver =  initMSEdgeDriver();
+                break;
+            default:
+                System.out.println("Invalid brower name, default initialing chrome driver....");
+                driver =  initChromeDriver();
+                break;
+        }
+        return driver;
+    }
 
     public void closeDriver()
     {

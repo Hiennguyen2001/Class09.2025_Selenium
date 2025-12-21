@@ -16,7 +16,7 @@ public class Login_Factory_BTVNDay14 {
     @FindBy(xpath ="//span[normalize-space()='Đổi mật khẩu']") WebElement btnDoiMatKhau;
 
 
-    public Login_Factory_BTVNDay14 (WebDriver driverTest){
+    public Login_Factory_BTVNDay14(WebDriver driverTest) {
         this.driver = driverTest;
         PageFactory.initElements(driverTest, this);
     }

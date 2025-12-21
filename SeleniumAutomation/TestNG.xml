@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+
+	<test name="Test Day 12 and Day 17 on firefox">
+        <parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="automation.testsuite.Day12_Checkbox" />
+			<class name="automation.testsuite.Day17_HandleIframe" />
+		</classes>	
+	</test>
+    <test name="Test Day 12 and Day 17 on chrome">
+    <parameter name="browser" value="chrome"></parameter>
+    <classes>
+        <class name="automation.testsuite.Day12_Checkbox" />
+        <class name="automation.testsuite.Day17_HandleIframe" />
+    </classes>
+    </test>
+</suite> <!-- Suite -->

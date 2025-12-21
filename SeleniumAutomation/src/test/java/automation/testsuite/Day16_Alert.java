@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -15,6 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class Day16_Alert extends CommonBase {
     @BeforeMethod
+  //  @Parameters("brower")
     public void openWebPage()
     {
         driver = initWebDriver(CT_PageURL.DELETE_CUST_URL);

@@ -26,7 +26,7 @@ public class Day14_Test extends CommonBase {
     @Test
     public void loginSucessfully()
     {
-        LoginPage_Factory login = new LoginPage_Factory(driver);
+        LoginPage_Factory login = new LoginPage_Factory(driver);//
         login.LoginFunction("admin@gmail.com", "12345678");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         assertTrue(driver.findElement(By.xpath("//p[text()='Quản lý người dùng']")).isDisplayed());

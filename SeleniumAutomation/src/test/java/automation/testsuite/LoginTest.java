@@ -5,10 +5,7 @@ import automation.constant.CT_PageURL;
 import automation.pagelocator.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -17,9 +14,12 @@ import static org.testng.Assert.assertTrue;
 public class LoginTest extends CommonBase {
    // @BeforeTest
    @BeforeMethod
-    public void openWebPage()
+   @Parameters ("browser") //brower la name cua parameters trong testNG
+    public void openWebPage(String browserSetup)
     {
-        driver = initWebDriver(CT_PageURL.CRMSTAR_URL);
+       // driver = initWebDriver(CT_PageURL.CRMSTAR_URL);
+        setupDriver(browserSetup);
+        driver.get(CT_PageURL.CRMSTAR_URL);
     }
 //    @AfterMethod
 //    public void closeBrowser() {

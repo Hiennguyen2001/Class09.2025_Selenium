@@ -5,6 +5,7 @@ import automation.constant.CT_PageURL;
 import automation.pagelocator.Day17_GuruPopup;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -14,9 +15,12 @@ import static org.testng.Assert.assertTrue;
 
 public class Day17_HandleIframe extends CommonBase {
     @BeforeMethod
-    public void openCodestar2Page()
+    @Parameters("browser") //brower la name cua parameters trong testNG
+    public void openWebPage(String browserSetup)
     {
-        driver = initWebDriver(CT_PageURL.CODESTAR2_URL);
+        // driver = initWebDriver(CT_PageURL.CRMSTAR_URL);
+        setupDriver(browserSetup);
+        driver.get(CT_PageURL.CODESTAR2_URL);
     }
     @Test
     public void dangkyTuvan_NotSuccessfully()

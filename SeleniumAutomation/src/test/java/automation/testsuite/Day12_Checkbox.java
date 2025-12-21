@@ -5,6 +5,8 @@ import automation.constant.CT_PageURL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import  org.testng.*;
@@ -15,9 +17,17 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class Day12_Checkbox extends CommonBase {
+    @BeforeMethod
+    @Parameters("browser") //brower la name cua parameters trong testNG
+    public void openWebPage(String browserSetup)
+    {
+        // driver = initWebDriver(CT_PageURL.CRMSTAR_URL);
+        setupDriver(browserSetup);
+        driver.get(CT_PageURL.DEMOQA_URL);
+    }
     @Test
     public void checkboxHandle(){
-        driver = initChromeDriver(CT_PageURL.DEMOQA_URL);
+      //  driver = initChromeDriver(CT_PageURL.DEMOQA_URL);
         // Case 1: kiểm tra yêu cầu mặc định theo yêu cầu, VD: vào trang web thì checkox chưa đc check
         WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
         WebElement readCheckbox = driver.findElement(By.id("hobbies-checkbox-2"));
@@ -35,7 +45,7 @@ public class Day12_Checkbox extends CommonBase {
     @Test
     public void clickToCheckbox()
     {
-        driver = initChromeDriver(CT_PageURL.DEMOQA_URL);
+      //  driver = initChromeDriver(CT_PageURL.DEMOQA_URL);
        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id("hobbies-checkbox-1")));
         WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
         WebElement readCheckbox = driver.findElement(By.id("hobbies-checkbox-2"));
